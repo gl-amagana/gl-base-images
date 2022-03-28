@@ -20,12 +20,10 @@ jobs:
         run: |
           docker build . --file golang/1.16/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.16:$(date +%s)
           docker build . --file golang/1.16/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.16:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Go 1.17
         run: |
           docker build . --file golang/1.17/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.17:$(date +%s)
           docker build . --file golang/1.17/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.17:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Go 1.18
         run: |
           docker build . --file golang/1.18/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.18:$(date +%s)
@@ -38,11 +36,9 @@ jobs:
         run: |
           docker build . --file java/8/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-8:$(date +%s)
           docker build . --file java/8/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-8:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Java 11
         run: |
           docker build . --file java/11/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-11:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Java 17
         run: |
           docker build . --file java/17/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-17:$(date +%s)
@@ -55,12 +51,10 @@ jobs:
         run: |
           docker build . --file nodejs/12/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-12:$(date +%s)
           docker build . --file nodejs/12/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-12:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Nodejs 16
         run: |
           docker build . --file nodejs/16/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-16:$(date +%s)
           docker build . --file nodejs/16/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-16:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Nodejs 17
         run: |
           docker build . --file nodejs/17/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-17:$(date +%s)
