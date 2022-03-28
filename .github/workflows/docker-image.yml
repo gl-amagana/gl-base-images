@@ -21,6 +21,12 @@ jobs:
         run: | 
           docker build . --file golang/1.16/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.16:$(date +%s)
           docker build . --file golang/1.16/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.16:$(date +%s)
+          
+          docker build . --file golang/1.17/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.17:$(date +%s)
+          docker build . --file golang/1.17/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.17:$(date +%s)
+          
+          docker build . --file golang/1.18/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.18:$(date +%s)
+          docker build . --file golang/1.18/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.18:$(date +%s)
   java-image:
     runs-on: ubuntu-latest
     steps:
@@ -29,3 +35,9 @@ jobs:
         run: | 
           docker build . --file java/8/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-8:$(date +%s)
           docker build . --file java/8/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-8:$(date +%s)
+          
+          docker build . --file java/11/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-11:$(date +%s)
+          docker build . --file java/11/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-11:$(date +%s)
+          
+          docker build . --file java/17/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-17:$(date +%s)
+          docker build . --file java/17/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-17:$(date +%s)
