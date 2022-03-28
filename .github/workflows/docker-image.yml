@@ -1,6 +1,12 @@
 name: Docker Image CI
 
 on:
+  push:
+    paths:
+      - 'golang/**'
+      - 'java/**'
+      - 'nodejs/**'
+      - 'python/**'
   pull_request:
     branches:
       - main
