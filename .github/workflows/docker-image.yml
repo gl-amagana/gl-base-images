@@ -18,12 +18,14 @@ jobs:
     steps:
       - name: Build the Docker image for Go
       - uses: actions/checkout@v2
-      - run: docker build . --file golang/1.16/alpine/Dockerfile --tag GO_IMAGE_NAME-alpine-1.16:$(date +%s) # dynamic --file field?
-      - run: docker build . --file golang/1.16/bullseye/Dockerfile --tag GO_IMAGE_NAME-bullseye-1.16:$(date +%s)
+        run: | 
+          docker build . --file golang/1.16/alpine/Dockerfile --tag GO_IMAGE_NAME-alpine-1.16:$(date +%s)
+          docker build . --file golang/1.16/bullseye/Dockerfile --tag GO_IMAGE_NAME-bullseye-1.16:$(date +%s)
   java-image:
     runs-on: ubuntu-latest
     steps:
       - name: Build the Docker image for Java
       - uses: actions/checkout@v2
-      - run: docker build . --file java/8/alpine/Dockerfile --tag JAVA_IMAGE_NAME-alpine-8:$(date +%s)
-      - run: docker build . --file java/8/bullseye/Dockerfile --tag JAVA_IMAGE_NAME-bullseye-8:$(date +%s)
+        run: | 
+          docker build . --file java/8/alpine/Dockerfile --tag JAVA_IMAGE_NAME-alpine-8:$(date +%s)
+          docker build . --file java/8/bullseye/Dockerfile --tag JAVA_IMAGE_NAME-bullseye-8:$(date +%s)
