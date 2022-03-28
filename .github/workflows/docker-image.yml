@@ -40,3 +40,37 @@ jobs:
           
           docker build . --file java/17/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-17:$(date +%s)
           docker build . --file java/17/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-17:$(date +%s)
+  node-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image for Node
+        run: |
+          docker build . --file node/12/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-12:$(date +%s)
+          docker build . --file node/12/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-12:$(date +%s)
+
+          docker build . --file node/16/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-16:$(date +%s)
+          docker build . --file node/16/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-16:$(date +%s)
+
+          docker build . --file node/17/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-17:$(date +%s)
+          docker build . --file node/17/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-17:$(date +%s)
+  python-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image for Python
+        run: |
+          docker build . --file python/3.7/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.7:$(date +%s)
+          docker build . --file python/3.7/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.7:$(date +%s)
+          
+          docker build . --file python/3.8/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.8:$(date +%s)
+          docker build . --file python/3.8/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.8:$(date +%s)
+          
+          docker build . --file python/3.9/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.9:$(date +%s)
+          docker build . --file python/3.9/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.9:$(date +%s)
+          
+          docker build . --file python/3.10/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.10:$(date +%s)
+          docker build . --file python/3.10/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.10:$(date +%s)
+          
+          docker build . --file python/3.11/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.11:$(date +%s)
+          docker build . --file python/3.11/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.11:$(date +%s)
