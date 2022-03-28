@@ -41,7 +41,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build image for Java 11
         run: |
-          docker build . --file java/11/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-11:$(date +%s)
           docker build . --file java/11/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-11:$(date +%s)
       - uses: actions/checkout@v2
       - name: Build image for Java 17
@@ -74,22 +73,18 @@ jobs:
         run: |
           docker build . --file python/3.7/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.7:$(date +%s)
           docker build . --file python/3.7/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.7:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Python 3.8
         run: |
           docker build . --file python/3.8/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.8:$(date +%s)
           docker build . --file python/3.8/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.8:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Python 3.9
         run: |
           docker build . --file python/3.9/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.9:$(date +%s)
           docker build . --file python/3.9/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.9:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Python 3.10
         run: |
           docker build . --file python/3.10/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.10:$(date +%s)
           docker build . --file python/3.10/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.10:$(date +%s)
-      - uses: actions/checkout@v2
       - name: Build image for Python 3.11
         run: |
           docker build . --file python/3.11/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.11:$(date +%s)
