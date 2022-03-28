@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file golang/1.16/alpine/Dockerfile --tag test:$(date +%s) # dynamic --file field?
+        run: git log --name-only --pretty="format:" ${{ github.event.before }}..${{ github.event.after }} | sort -u && docker build . --file golang/1.16/alpine/Dockerfile --tag test:$(date +%s) # dynamic --file field?
