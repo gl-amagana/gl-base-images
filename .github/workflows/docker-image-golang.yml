@@ -15,11 +15,11 @@ jobs:
         id: changes
         with:
           filters: |
-            1.16:
+            src:
               - 'golang/1.16/**'
 
       - name: Build image for Go 1.16
-        if: steps.changes.outputs.1.16 == 'true'
+        if: steps.changes.outputs.src == 'true'
         run: |
           docker build . --file golang/1.16/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.16:${{github.run_number}}
           docker build . --file golang/1.16/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.16:${{github.run_number}}
@@ -28,11 +28,11 @@ jobs:
         id: changes
         with:
           filters: |
-            1.17:
+            src:
               - 'golang/1.17/**'
 
       - name: Build image for Go 1.17
-        if: steps.changes.outputs.1.17 == 'true'
+        if: steps.changes.outputs.src == 'true'
         run: |
           docker build . --file golang/1.17/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.17:${{github.run_number}}
           docker build . --file golang/1.17/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.17:${{github.run_number}}
@@ -41,11 +41,11 @@ jobs:
         id: changes
         with:
           filters: |
-            1.18:
+            src:
               - 'golang/1.18/**'
 
       - name: Build image for Go 1.18
-        if: steps.changes.outputs.1.18 == 'true'
+        if: steps.changes.outputs.src == 'true'
         run: |
           docker build . --file golang/1.18/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.18:${{github.run_number}}
           docker build . --file golang/1.18/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.18:${{github.run_number}}
