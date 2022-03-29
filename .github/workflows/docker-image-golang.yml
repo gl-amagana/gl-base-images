@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: dorny/paths-filter@v2
       - name: Check if files changed
+        uses: dorny/paths-filter@v2
         id: changes
         with:
           filters: |
