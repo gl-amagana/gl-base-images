@@ -3,7 +3,7 @@ name: Docker Image CI Golang
 on:
   pull_request:
     paths:
-      - 'golang/**'
+      - golang/**
 
 env:
   GO_IMAGE_NAME: gl-golang

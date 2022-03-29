@@ -3,7 +3,7 @@ name: Docker Image CI Nodejs
 on:
   pull_request:
     paths:
-      - 'nodejs/**'
+      - nodejs/**
 
 env:
   NODE_IMAGE_NAME: gl-node

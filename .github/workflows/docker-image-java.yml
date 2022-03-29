@@ -3,7 +3,7 @@ name: Docker Image CI Java
 on:
   pull_request:
     paths:
-      - 'java/**'
+      - java/**
 
 env:
   JAVA_IMAGE_NAME: gl-java

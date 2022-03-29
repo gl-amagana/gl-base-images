@@ -3,7 +3,7 @@ name: Docker Image CI Python
 on:
   pull_request:
     paths:
-      - 'python/**'
+      - python/**
 
 env:
   PYTHON_IMAGE_NAME: gl-python
