@@ -1,9 +1,6 @@
 name: Docker Image CI Java
 
-on:
-  pull_request:
-    paths:
-      - java/**
+on: [ pull_request ]
 
 env:
   JAVA_IMAGE_NAME: gl-java
@@ -13,14 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Check if files changed
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'java/8/**'
+            src2:
+              - 'java/11/**'
+            src3:
+              - 'java/17/**'
+
       - name: Build image for Java 8
+        if: steps.changes.outputs.src == 'true'
         run: |
           docker build . --file java/8/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-8:${{github.run_number}}
           docker build . --file java/8/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-8:${{github.run_number}}
       - name: Build image for Java 11
+        if: steps.changes.outputs.src2 == 'true'
         run: |
           docker build . --file java/11/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-11:${{github.run_number}}
       - name: Build image for Java 17
+        if: steps.changes.outputs.src3 == 'true'
         run: |
           docker build . --file java/17/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-17:${{github.run_number}}
           docker build . --file java/17/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-17:${{github.run_number}}
