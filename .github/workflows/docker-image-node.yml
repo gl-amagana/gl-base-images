@@ -1,7 +1,6 @@
 name: Docker Image CI Nodejs
 
 on:
-  push:
   pull_request:
     paths:
       - nodejs/**

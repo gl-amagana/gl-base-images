@@ -1,7 +1,6 @@
 name: Docker Image CI Golang
 
 on:
-  push:
   pull_request:
     paths:
       - golang/**
@@ -25,4 +24,4 @@ jobs:
       - name: Build image for Go 1.18
         run: |
           docker build . --file golang/1.18/alpine/Dockerfile --tag $GO_IMAGE_NAME-alpine-1.18:${{github.run_number}}
-          docker build . --file golang/1.18/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.18:${{github.run_number}
+          docker build . --file golang/1.18/bullseye/Dockerfile --tag $GO_IMAGE_NAME-bullseye-1.18:${{github.run_number}}
