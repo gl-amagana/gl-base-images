@@ -1,15 +1,13 @@
 name: Docker Image CI
 
 on:
-  push:
+  pull_request:
+    branches: ['main']
     paths:
       - 'golang/**'
       - 'java/**'
       - 'nodejs/**'
       - 'python/**'
-  pull_request:
-    branches:
-      - main
 
 env:
   GO_IMAGE_NAME: gl-golang
