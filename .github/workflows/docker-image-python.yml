@@ -1,0 +1,35 @@
+name: Docker Image CI Python
+
+on:
+  pull_request:
+    paths:
+      - 'python/**'
+
+env:
+  PYTHON_IMAGE_NAME: gl-python
+
+jobs:
+  python-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image for Python 3.7
+        run: |
+          docker build . --file python/3.7/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.7:${{github.run_number}}
+          docker build . --file python/3.7/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.7:${{github.run_number}}
+      - name: Build image for Python 3.8
+        run: |
+          docker build . --file python/3.8/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.8:${{github.run_number}}
+          docker build . --file python/3.8/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.8:${{github.run_number}}
+      - name: Build image for Python 3.9
+        run: |
+          docker build . --file python/3.9/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.9:${{github.run_number}}
+          docker build . --file python/3.9/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.9:${{github.run_number}}
+      - name: Build image for Python 3.10
+        run: |
+          docker build . --file python/3.10/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.10:${{github.run_number}}
+          docker build . --file python/3.10/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.10:${{github.run_number}}
+      - name: Build image for Python 3.11
+        run: |
+          docker build . --file python/3.11/alpine/Dockerfile --tag $PYTHON_IMAGE_NAME-alpine-3.11:${{github.run_number}}
+          docker build . --file python/3.11/bullseye/Dockerfile --tag $PYTHON_IMAGE_NAME-bullseye-3.11:${{github.run_number}}

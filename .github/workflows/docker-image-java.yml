@@ -1,0 +1,26 @@
+name: Docker Image CI Java
+
+on:
+  pull_request:
+    paths:
+      - 'java/**'
+
+env:
+  JAVA_IMAGE_NAME: gl-java
+
+jobs:
+  java-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image for Java 8
+        run: |
+          docker build . --file java/8/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-8:${{github.run_number}}
+          docker build . --file java/8/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-8:${{github.run_number}}
+      - name: Build image for Java 11
+        run: |
+          docker build . --file java/11/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-11:${{github.run_number}}
+      - name: Build image for Java 17
+        run: |
+          docker build . --file java/17/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-17:${{github.run_number}}
+          docker build . --file java/17/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-17:${{github.run_number}}

@@ -1,0 +1,27 @@
+name: Docker Image CI Nodejs
+
+on:
+  pull_request:
+    paths:
+      - 'nodejs/**'
+
+env:
+  NODE_IMAGE_NAME: gl-node
+
+jobs:
+  node-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image for Nodejs 12
+        run: |
+          docker build . --file nodejs/12/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-12:${{github.run_number}}
+          docker build . --file nodejs/12/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-12:${{github.run_number}}
+      - name: Build image for Nodejs 16
+        run: |
+          docker build . --file nodejs/16/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-16:${{github.run_number}}
+          docker build . --file nodejs/16/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-16:${{github.run_number}}
+      - name: Build image for Nodejs 17
+        run: |
+          docker build . --file nodejs/17/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-17:${{github.run_number}}
+          docker build . --file nodejs/17/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-17:${{github.run_number}}
