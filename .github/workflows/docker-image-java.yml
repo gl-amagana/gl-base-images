@@ -28,10 +28,12 @@ jobs:
         run: |
           docker build . --file java/8/alpine/Dockerfile --tag $JAVA_IMAGE_NAME-alpine-8:${{github.run_number}}
           docker build . --file java/8/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-8:${{github.run_number}}
+
       - name: Build image for Java 11
         if: steps.changes.outputs.src2 == 'true'
         run: |
           docker build . --file java/11/bullseye/Dockerfile --tag $JAVA_IMAGE_NAME-bullseye-11:${{github.run_number}}
+
       - name: Build image for Java 17
         if: steps.changes.outputs.src3 == 'true'
         run: |

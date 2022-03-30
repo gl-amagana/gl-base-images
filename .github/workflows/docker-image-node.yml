@@ -28,11 +28,13 @@ jobs:
         run: |
           docker build . --file nodejs/12/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-12:${{github.run_number}}
           docker build . --file nodejs/12/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-12:${{github.run_number}}
+
       - name: Build image for Nodejs 16
         if: steps.changes.outputs.src2 == 'true'
         run: |
           docker build . --file nodejs/16/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-16:${{github.run_number}}
           docker build . --file nodejs/16/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-16:${{github.run_number}}
+
       - name: Build image for Nodejs 17
         if: steps.changes.outputs.src3 == 'true'
         run: |
