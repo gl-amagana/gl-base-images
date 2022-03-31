@@ -16,7 +16,7 @@ jobs:
         uses: dorny/paths-filter@v2
         id: changes
         with:
-          filters:
+          filters: |
             golang16:
               - 'golang/1.16/**'
             golang17:
