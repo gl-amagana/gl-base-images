@@ -7,6 +7,7 @@ env:
 
 jobs:
   java-image:
+    name: Java
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
