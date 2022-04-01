@@ -1,0 +1,43 @@
+name: Docker Image CI Nodejs
+
+on: [ pull_request ]
+
+env:
+  NODE_IMAGE_NAME: gl-node
+
+jobs:
+  node-image:
+    name: Nodejs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Check if files changed
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'nodejs/12/**'
+            src2:
+              - 'nodejs/16/**'
+            src3:
+              - 'nodejs/17/**'
+      
+      - name: Build image for Nodejs 12
+        if: steps.changes.outputs.src == 'true'
+        run: |
+          docker build . --file nodejs/12/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-12:${{github.run_number}}
+          docker build . --file nodejs/12/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-12:${{github.run_number}}
+
+      - name: Build image for Nodejs 16
+        if: steps.changes.outputs.src2 == 'true'
+        run: |
+          docker build . --file nodejs/16/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-16:${{github.run_number}}
+          docker build . --file nodejs/16/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-16:${{github.run_number}}
+
+      - name: Build image for Nodejs 17
+        if: steps.changes.outputs.src3 == 'true'
+        run: |
+          docker build . --file nodejs/17/alpine/Dockerfile --tag $NODE_IMAGE_NAME-alpine-17:${{github.run_number}}
+          docker build . --file nodejs/17/bullseye/Dockerfile --tag $NODE_IMAGE_NAME-bullseye-17:${{github.run_number}}
